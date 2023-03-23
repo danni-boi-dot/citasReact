@@ -4,11 +4,13 @@ import ListadoPacientes from "./components/ListadoPacientes"
 
 const App = () => {
   return (
-    <>
-      <Header/>
-      <Formulario/>
-      <ListadoPacientes/>
-    </>
+    <div className="container mx-auto">
+      <Header />
+      <div className="mt-12 md:flex">
+        <Formulario />
+        <ListadoPacientes />
+      </div>
+    </div>
   )
 }
 export default App
