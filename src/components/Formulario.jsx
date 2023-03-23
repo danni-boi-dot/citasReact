@@ -1,14 +1,25 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 
 const Formulario = () => {
+  const [nombre, setNombre] = useState('');
+  const [propietario, setPropietario] = useState('');
+  const [email, setEmail] = useState('');
+  const [alta, setAlta] = useState('');
+  const [sintomas, setSintomas] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Enviando Formulario')
+  }
   return (
     <div className="md:w-1/2 lg:w-2/5">
       <h2 className="font-black text-2xl text-center">Seguimiento de Pacientes</h2>
       <p className="text-lg mt-7 text-center mb-10">
         Añade Pacientes y {''}
-        <span className="text-indigo-600 font-bold">Administralos</span>
+        <span className="text-indigo-500 font-bold">Administralos</span>
       </p>
-      <form className="shadow-md rounded-lg py-8 px-5 bg-blue-100 mb-10">
+      <form className="shadow-md rounded-lg py-8 px-5 bg-blue-100 mb-10 mx-5 my-10"
+            onSubmit={handleSubmit}>
         <div className="mb-5">
           <label htmlFor="mascota" className="block text-gray-700 font-bold">Nombre de la Mascota</label>
           <input id="mascota"
@@ -17,7 +28,10 @@ const Formulario = () => {
             className="border-2 
                       w-full mt-2 p-2
                      placeholder-gray-400
-                      rounded-md"/>
+                      rounded-md"
+                      value={nombre}
+                      onChange={(e)=> setNombre(e.target.value)}
+                      />
         </div>
         <div className="mb-5">
           <label htmlFor="propietario" className="block text-gray-700 font-bold">Nombre del propietario</label>
@@ -27,7 +41,10 @@ const Formulario = () => {
             className="border-2 
                       w-full mt-2 p-2
                      placeholder-gray-400
-                      rounded-md"/>
+                      rounded-md"
+                      value={propietario}
+                      onChange={(e)=> setPropietario(e.target.value)}
+                      />
         </div>
         <div className="mb-5">
           <label htmlFor="email" className="block text-gray-700 font-bold">Email</label>
@@ -37,7 +54,10 @@ const Formulario = () => {
             className="border-2 
                       w-full mt-2 p-2
                      placeholder-gray-400
-                      rounded-md"/>
+                      rounded-md"
+                      value={email}
+                      onChange={(e)=> setEmail(e.target.value)}
+                      />
         </div>
         <div className="mb-5">
           <label htmlFor="fecha" className="block text-gray-700 font-bold">Alta</label>
@@ -46,21 +66,27 @@ const Formulario = () => {
             className="border-2 
                       w-full mt-2 p-2
                      placeholder-gray-400
-                      rounded-md"/>
+                      rounded-md"
+                      value={alta}
+                      onChange={(e)=> setAlta(e.target.value)}
+                      />
         </div>
         <div className="mb-5">
           <label htmlFor="sintomas" className="block text-gray-700 font-bold">Sintomas</label>
-          <textarea id="sintomas" 
-                    placeholder='Describe los sintomas'
-                    className="border-2 
+          <textarea id="sintomas"
+            placeholder='Describe los sintomas'
+            className="border-2 
                       w-full mt-2 p-2
                      placeholder-gray-400
-                      rounded-md"></textarea>
+                      rounded-md"
+                      value={sintomas}
+                      onChange={(e)=> setSintomas(e.target.value)}
+                      ></textarea>
         </div>
         <input type="submit"
-                className="bg-indigo-500 w-full p-2 uppercase font-bold text-gray-200 
-                hover:bg-blue-800 cursor-pointer transition-colors" 
-                value="Agregar Paciente"/>
+          className="bg-indigo-500 w-full p-2 uppercase font-bold text-gray-200 
+                hover:bg-blue-800 cursor-pointer transition-colors"
+          value="Agregar Paciente" />
       </form>
     </div>
   )
